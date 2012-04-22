@@ -16,7 +16,7 @@ Coming soon.
 ## <a name="installation"></a>Installation
 In your `Gemfile`, add the following dependencies:
 
-    gem 'comments'
+    gem 'comments', :git => "git://github.com/colvint/comments.git"
 
 Run:
 
