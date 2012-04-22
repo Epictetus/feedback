@@ -7,11 +7,11 @@ require "comments/version"
 Gem::Specification.new do |s|
   s.name        = "comments"
   s.version     = Comments::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Comments."
-  s.description = "TODO: Description of Comments."
+  s.authors     = ["Taurus Colvin"]
+  s.email       = ["taurus.colvin@gmail.com"]
+  s.homepage    = "http://www.tauruscolvin.com"
+  s.summary     = "An engine which provides commenting features to any Rails 3 application."
+  s.description = "An engine which provides commenting features to any Rails 3 application."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
