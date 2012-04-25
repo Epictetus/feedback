@@ -1,17 +1,17 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "comments/version"
+require "feedback/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "comments"
-  s.version     = Comments::VERSION
+  s.name        = "feedback"
+  s.version     = Feedback::VERSION
   s.authors     = ["Taurus Colvin"]
   s.email       = ["taurus.colvin@gmail.com"]
   s.homepage    = "http://www.tauruscolvin.com"
-  s.summary     = "An engine which provides commenting features to any Rails 3 application."
-  s.description = "An engine which provides commenting features to any Rails 3 application."
+  s.summary     = "A Rails 3 engine which adds full-stack user feedback features to your application."
+  s.description = "A Rails 3 engine which adds full-stack user feedback features to your application."
 
   s.files = Dir["{app,config,db,lib}/**/*"] + ["MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]

@@ -1,4 +1,4 @@
 # desc "Explaining what the task does"
-# task :comments do
+# task :feedback do
 #   # Task goes here
 # end

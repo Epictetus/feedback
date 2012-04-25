@@ -1,22 +1,23 @@
-# Comments
+# Feedback
 
-An engine which provides commenting features to any Rails 3 application.
+A Rails 3 engine which adds full-stack user feedback features to your application.
 
 ## <a name="features"></a>Features
 
-* Makes your models comment-able with `acts_as_commentable`.
-* Adds comment forms to your pages.
-* Allows you to configure commenting rules.
-* Provides total control over comments through an easy admin interface.
+* Comment on models with `acts_as_commentable`.
+* Review models with `acts_as_reviewable`.
+* Use view helpers to add pre-built feedback UI elements to your pages.
+* Configure rules controlling feedback and spam filtering.
+* Manage feedback flagged as spam or inapproriate with an easy admin interface.
 
 ## <a name="demo"></a>Screencast
 
-Coming soon.
+Coming soon...
 
 ## <a name="installation"></a>Installation
 In your `Gemfile`, add the following dependencies:
 
-    gem 'comments', :git => "git://github.com/colvint/comments.git"
+    gem 'feedback', :git => "git://github.com/colvint/feedback.git"
 
 Run:
 
@@ -24,4 +25,4 @@ Run:
 
 And then run:
 
-    $ rails g comments:install
+    $ rails g feedback:install
