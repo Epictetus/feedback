@@ -10,6 +10,9 @@ require 'factory_girl'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+FactoryGirl.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
+FactoryGirl.find_definitions
+
 RSpec.configure do |config|
   # ## Mock Framework
   #
