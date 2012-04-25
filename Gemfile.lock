@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    comments (0.0.1)
+    feedback (0.0.1)
       rails (~> 3.2.3)
 
 GEM
@@ -140,8 +140,8 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  comments!
   factory_girl_rails
+  feedback!
   guard-rspec
   jquery-rails
   rspec-rails
