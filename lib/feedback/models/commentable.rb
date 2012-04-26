@@ -3,11 +3,11 @@ module Feedback
     module Commentable
       # class methods here
       def acts_as_commentable
+        has_many :comments, :as => :commentable
         send :include, InstanceMethods
       end
 
       module InstanceMethods
-        # instance methods here
       end
     end
   end
