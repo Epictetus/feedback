@@ -3,12 +3,12 @@ require 'spec_helper'
 describe Comment do
   before(:each) do
     @user = create(:user, name: "Bill Bixby")
-    @blog_post = create(:blog_post, title: "A great thought")
-    @comment = Comment.new(commentable: @blog_post, user: @user)
+    @blog_post = create(:blog_post, title: "Mr. McGee, Don't Make Me Angry")
+    @comment = Comment.create(commentable: @blog_post, user: @user)
   end
   
   it "accepts a commentable" do
-    @comment.commentable.title.should == "A great thought"
+    @comment.commentable.title.should == "Mr. McGee, Don't Make Me Angry"
   end
   
   it "is attributable to a user" do
