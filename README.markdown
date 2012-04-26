@@ -15,7 +15,7 @@ A Rails 3 engine which adds full-stack user feedback to your application.
 Coming soon...
 
 ## <a name="installation"></a>Installation
-In your `Gemfile`, add the following dependencies:
+Add the feedback gem to your `Gemfile`:
 
     gem 'feedback', :git => "git://github.com/colvint/feedback.git"
 
