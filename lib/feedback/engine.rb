@@ -4,7 +4,7 @@ module Feedback
       g.test_framework :rspec, :view_specs => false
     end
     
-    initializer "feedback.models.commentable" do
+    initializer "feedback.active_record" do
       ActiveSupport.on_load(:active_record) do
         extend Feedback::Models::Commentable
       end
