@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     feedback (0.0.1)
+      haml
       rails (~> 3.2.3)
 
 GEM
@@ -59,6 +60,7 @@ GEM
       thor (~> 0.14.6)
     guard-rspec (0.7.0)
       guard (>= 0.10.0)
+    haml (3.1.4)
     hike (1.2.1)
     i18n (0.6.0)
     journey (1.0.3)
