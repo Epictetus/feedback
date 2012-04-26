@@ -14,4 +14,10 @@ describe Comment do
   it "is attributable to a user" do
     @comment.user.name.should == "Bill Bixby"
   end
+  
+  it "can be replied to" do
+    reply = Comment.create(commentable: @comment, user: @user)
+    reply.commentable.should eq(@comment)
+    @comment.replies.should eq([reply])
+  end
 end
