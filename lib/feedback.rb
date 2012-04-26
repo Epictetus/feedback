@@ -1,5 +1,5 @@
 require "feedback/engine"
-require "feedback/acts_as_commentable"
+require "feedback/models/commentable"
 
 module Feedback
 end
