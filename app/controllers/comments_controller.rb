@@ -1,9 +1,18 @@
 class CommentsController < ApplicationController
   
-  before_filter :find_commentable
+  respond_to :html, :json
+  
+  before_filter :find_commentable, :only => [:index]
   
   def index
     @comments = @commentable.comments
+  end
+  
+  def create
+    if @comment = Comment.create!(params[:comment])
+      flash[:notice] = "Comment saved."
+    end
+    respond_with(@comment, :location => @comment.commentable)
   end
   
   private
