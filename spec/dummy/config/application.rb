@@ -4,7 +4,11 @@ require 'rails/all'
 
 Bundler.require
 require "feedback"
-require "haml"
+require "haml-rails"
+require "html5-rails"
+require "sass-rails"
+require "compass-rails"
+require "compass-h5bp"
 
 module Dummy
   class Application < Rails::Application
