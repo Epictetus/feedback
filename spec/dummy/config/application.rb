@@ -4,6 +4,7 @@ require 'rails/all'
 
 Bundler.require
 require "feedback"
+require "haml"
 
 module Dummy
   class Application < Rails::Application
