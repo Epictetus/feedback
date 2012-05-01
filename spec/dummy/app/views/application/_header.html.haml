@@ -1,2 +1,10 @@
-%header#header
-  %h1 Dummy
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      %ul.nav
+        %li.active
+          = link_to "Blog Posts", blog_posts_path
+        %li
+          = link_to "Some Engine"
+        %li
+          = link_to "Another Engine"

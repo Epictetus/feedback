@@ -3,6 +3,7 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 Bundler.require
+
 require "compass-rails"
 require "compass-h5bp"
 require "compass_twitter_bootstrap"

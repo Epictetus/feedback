@@ -1,17 +1,25 @@
-%h3
-  Inline form
-  
-%p
-  Add 
-  %code
-    =".form-inline"
-  to finesse the vertical alignment and spacing of form controls.
-  
-%form.well.form-inline
-  %input.input-small{:type => "text", :placeholder => "Email"}
-  %input.input-small{:type => "password", :placeholder => "Password"}
-  = label_tag("", nil, :class => "checkbox") do
-    %input{:type => "checkbox"}
-      Remember me
-  %button.btn{:type => "submit"}
-    Sign in
+- content_for :page_header do
+  .page-header
+    %h2
+      Blog Posts
+      %small
+        these are really cool man
+
+.row
+  .span6.offset3
+    %table.table.table-bordered.table-striped
+      %thead
+        %tr
+          %td
+            Title
+          %td
+            Body
+      %tbody
+        - @blog_posts.each do |p|
+          %tr
+            %td
+              = link_to p.title, p
+            %td
+              = truncate p.body
+            
+  .span3

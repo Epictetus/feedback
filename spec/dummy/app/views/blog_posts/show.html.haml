@@ -1,0 +1,29 @@
+- content_for :page_header do
+  %ul.breadcrumb
+    %li
+      = link_to "Home", blog_posts_path
+      %span.divider
+        = "/"
+    %li.active
+      Blog Posts
+      
+.row
+  .span6.offset3
+    %h2
+      = @blog_post.title
+    %p
+      This is a mondo-cool post.
+    
+    %ul.thumbnails
+      %li.span4
+        = link_to image_tag("http://placehold.it/360x268"), "#", :class => "thumbnail"
+      %li.span2
+        = link_to image_tag("http://placehold.it/160x120"), "#", :class => "thumbnail"
+      %li.span2
+        = link_to image_tag("http://placehold.it/160x120"), "#", :class => "thumbnail"
+  .span3
+  
+  .span6.offset3
+    %p
+      = @blog_post.body
+  .span3
