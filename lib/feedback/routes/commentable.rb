@@ -4,7 +4,9 @@ module Feedback
       def commentable_routes_for(*models)
         models.each do |model|
           resources model, :only => [] do
-            resources :comments, :only => [:index]
+            namespace :feedback do
+              resources :comments, :only => [:index, :create]
+            end
           end
         end
       end

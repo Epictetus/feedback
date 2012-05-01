@@ -38,8 +38,27 @@
         Join the Discussion
         %small
           You will be asked to log in or register.
-    .well
-      = form_tag("", :class => "new-comment") do
-        = text_area_tag "comment", nil, :placeholder => "Type your comment here."
-        = submit_tag "Post", :class => "btn btn-primary pull-right"
+          
+    .feedback-comment-widget
+    
+      .community-panel
+        %ul
+          %li.like
+            %button
+              Like
+          %li.unlike
+            %button
+              Unlike
+          %li.recent-liker
+            = image_tag("https://si0.twimg.com/profile_images/1807338004/small_avatar_mini.jpg")
+          %li.like-stats
+            and 1,446 others liked this.
+
+      .new-comment
+        = form_for(Feedback::Comment.new, :url => blog_post_feedback_comments_path(@blog_post)) do |f|
+          %ul
+            %li
+              = f.text_area "body", :placeholder => "Type your comment here.", :required => true
+            %li
+              = submit_tag "Post"
   .span3

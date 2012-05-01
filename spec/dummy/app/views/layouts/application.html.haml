@@ -7,16 +7,15 @@
   
     = render "chromeframe"
     = render "header"
-
+    
     .container{ :role => "main" }
-      
+      - flash.each do |name, msg|
+        .alert{:class => "alert-#{name == :notice ? 'success' : 'error'}"}
+          %a.close{:"data-dismiss" => "alert"}
+          = msg
+        
       %section
-        .row
-          .span12
-            = render "flashes"
-          
         = yield :page_header
-      
         = yield
           
     -# Javascript at the bottom for fast page loading
