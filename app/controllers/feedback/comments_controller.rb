@@ -1,4 +1,4 @@
-class CommentsController < ApplicationController
+class Feedback::CommentsController < ApplicationController
   
   respond_to :html, :json
   
@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   end
   
   def create
-    if @comment = Comment.create!(params[:comment])
+    if @comment = Feedback::Comment.create!(params[:comment])
       flash[:notice] = "Comment saved."
     end
     respond_with(@comment, :location => @comment.commentable)

@@ -1,4 +1,4 @@
-class Comment < ActiveRecord::Base
+class Feedback::Comment < ActiveRecord::Base
   attr_protected
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
@@ -6,9 +6,9 @@ class Comment < ActiveRecord::Base
   validates_presence_of [:user_id, :commentable_id, :commentable_type]
   
   def replies
-    Comment.where(
+    Feedback::Comment.where(
       :commentable_id => id, 
-      :commentable_type => "Comment"
+      :commentable_type => "Feedback::Comment"
     )
   end
 end

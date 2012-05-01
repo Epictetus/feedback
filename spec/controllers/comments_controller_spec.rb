@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe CommentsController do
+describe Feedback::CommentsController do
   describe "GET index" do
     before(:each) do
       @blog_post = create(:blog_post)
