@@ -5,21 +5,19 @@
 
   %body{ :class => "#{ controller.controller_name }" }
   
-    .container-fluid{ :role => "main" }
-    
-      = render "chromeframe"
-      = render "header"
+    = render "chromeframe"
+    = render "header"
+
+    .container{ :role => "main" }
       
-      .row
-        .span12
-          = render "flashes"
+      %section
+        .row
+          .span12
+            = render "flashes"
           
-      .row
-        .span6.offset3
-          = yield :page_header
-        .span3
+        = yield :page_header
       
-      = yield
+        = yield
           
-      -# Javascript at the bottom for fast page loading
-      = render "javascripts"
+    -# Javascript at the bottom for fast page loading
+    = render "javascripts"
