@@ -1,10 +1,17 @@
 .navbar.navbar-fixed-top
   .navbar-inner
     .container
-      %ul.nav
-        %li.active
-          = link_to "Blog Posts", blog_posts_path
-        %li
-          = link_to "Some Engine"
-        %li
-          = link_to "Another Engine"
+      = link_to("#", :class => "btn btn-navbar", :"data-toggle" => "collapse", :"data-target" => ".nav-collapse") do
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "Dummy App", "/", :class => "brand"
+    
+      .nav-collapse.collapse
+        %ul.nav
+          %li.active
+            = link_to "Blog Posts", blog_posts_path
+          %li
+            = link_to "Some Engine"
+          %li
+            = link_to "Another Engine"
