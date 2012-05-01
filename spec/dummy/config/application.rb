@@ -3,12 +3,14 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 Bundler.require
+require "compass-rails"
+require "compass-h5bp"
+require "compass_twitter_bootstrap"
 require "feedback"
 require "haml-rails"
 require "html5-rails"
+require "jquery-rails"
 require "sass-rails"
-require "compass-rails"
-require "compass-h5bp"
 
 module Dummy
   class Application < Rails::Application

@@ -1,9 +1,15 @@
+GIT
+  remote: https://github.com/vwall/compass-twitter-bootstrap.git
+  revision: 1a7b5ce54efaf764eb317127521f7630964a3da7
+  specs:
+    compass_twitter_bootstrap (2.0.1.2)
+      compass
+
 PATH
   remote: .
   specs:
     feedback (0.0.1)
       haml-rails
-      html5-rails
       jquery-rails
       rails (~> 3.2.3)
 
@@ -183,9 +189,12 @@ DEPENDENCIES
   coffee-rails
   compass-h5bp
   compass-rails
+  compass_twitter_bootstrap!
   factory_girl_rails
   feedback!
   guard-rspec
+  haml-rails
+  html5-rails
   jquery-rails
   rspec-rails
   sass-rails

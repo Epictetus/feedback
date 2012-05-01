@@ -1,0 +1,17 @@
+%h3
+  Inline form
+  
+%p
+  Add 
+  %code
+    =".form-inline"
+  to finesse the vertical alignment and spacing of form controls.
+  
+%form.well.form-inline
+  %input.input-small{:type => "text", :placeholder => "Email"}
+  %input.input-small{:type => "password", :placeholder => "Password"}
+  = label_tag("", nil, :class => "checkbox") do
+    %input{:type => "checkbox"}
+      Remember me
+  %button.btn{:type => "submit"}
+    Sign in
