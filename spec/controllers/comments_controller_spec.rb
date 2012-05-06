@@ -21,6 +21,7 @@ describe Feedback::CommentsController do
     before(:each) do
       @blog_post = create(:blog_post)
       @user = create(:user)
+      sign_in @user
       post(
         :create, 
         :feedback_comment => {:body => "This is a great post"}, 
