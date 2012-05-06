@@ -1,4 +1,4 @@
 class BlogPost < ActiveRecord::Base
-  acts_as_commentable
+  has_comments
   attr_accessible :body, :title, :user_id
 end

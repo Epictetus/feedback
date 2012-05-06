@@ -2,7 +2,7 @@ module Feedback
   module Models
     module Commentable
       # class methods here
-      def acts_as_commentable
+      def has_comments
         has_many :comments, :as => :commentable, :class_name => "Feedback::Comment"
         send :include, InstanceMethods
       end
