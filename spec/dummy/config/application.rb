@@ -7,6 +7,7 @@ Bundler.require
 require "compass-rails"
 require "compass-h5bp"
 require "compass_twitter_bootstrap"
+require "devise"
 require "feedback"
 require "haml-rails"
 require "html5-rails"
