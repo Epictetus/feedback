@@ -11,6 +11,7 @@ gemspec
 # your gem to rubygems.org.
 
 group :development do
+  gem "devise"
   gem "jquery-rails"
   gem "haml-rails"
 end
