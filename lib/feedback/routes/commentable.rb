@@ -2,6 +2,7 @@ module Feedback
   module RouteHelpers
     module Commentable
       def commentable_routes_for(*models)
+        models << :feedback_comment
         models.each do |model|
           resources model, :only => [] do
             namespace :feedback do
