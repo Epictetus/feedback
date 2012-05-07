@@ -10,9 +10,12 @@ class Feedback::CommentsController < ApplicationController
   end
   
   def create
-    @comment = Feedback::Comment.new(params[:feedback_comment])
-    @comment.author = current_user
-    @comment.commentable = @commentable
+    @comment = Feedback::Comment.new(
+      params[:feedback_comment].merge(
+        :author => current_user, 
+        :commentable => @commentable
+      )
+    )
 
     if @comment.save!
       uri = if @commentable.is_a?(Feedback::Comment)
