@@ -61,7 +61,7 @@
         - comments = @blog_post.comments
         - unless comments.empty?
           %h3
-            = "Showing #{comments.size} comments"
+            = "Showing #{pluralize(comments.size, 'comment')}"
           .controls
             %ul
               %li.sort-by
