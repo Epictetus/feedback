@@ -17,7 +17,7 @@ describe Feedback::CommentsController do
     end
   end
   
-  describe "POST create" do
+  describe "POST create (comment)" do
     before(:each) do
       @blog_post = create(:blog_post)
       @user = create(:user)
@@ -52,5 +52,24 @@ describe Feedback::CommentsController do
     it "redirects to blog post" do
       response.should redirect_to(@blog_post)
     end
+  end
+  
+  describe "POST create (reply)" do
+    
+    before(:each) do
+      @comment = create(:comment)
+      @user = create(:user)
+      sign_in @user
+      post(
+        :create, 
+        :feedback_comment => {:body => "This is a great post"}, 
+        :comment_id => @comment.id
+      )
+    end
+    
+    it "assigns @comment" do
+      assigns(:comment)
+    end
+    
   end
 end

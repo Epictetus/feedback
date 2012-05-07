@@ -15,19 +15,16 @@ class Feedback::CommentsController < ApplicationController
     @comment.commentable = @commentable
     
     if @comment.save!
-      redirect_to @commentable, :notice => "Comment saved."
+      uri = @commentable.is_a?(Feedback::Comment) ? @commentable.root.commentable : @commentable
+      redirect_to uri, :notice => "Comment saved."
     end
   end
   
   private
   
   def find_commentable
-    params.each do |name, value|  
-      if name =~ /(.+)_id$/  
-        @commentable = $1.classify.constantize.find(value)  
-        break
-      end  
-    end
+    type, id = /^\/(.*)\/(\d+)/.match(request.original_fullpath).to_a.slice(1,2)
+    @commentable = type.classify.constantize.find(id)
     render :status => 404 unless @commentable
   end
 end

@@ -5,6 +5,7 @@ class Feedback::Comment < ActiveRecord::Base
   belongs_to :author, :class_name => "User", :foreign_key => "user_id"
   
   has_comments
+  has_ancestry
   
   validates_presence_of [:user_id, :commentable_id, :commentable_type]
   
@@ -14,4 +15,5 @@ class Feedback::Comment < ActiveRecord::Base
       :commentable_type => "Feedback::Comment"
     )
   end
+
 end
