@@ -1,0 +1,12 @@
+- placeholder_text ||= "Type your comment here."
+- btn_text ||= "Post"
+
+.new-comment
+  = form_for(Feedback::Comment.new, :url => feedback_comments_path_for(commentable)) do |f|
+    %ul
+      %li
+        .control
+          = f.text_area "body", :placeholder => placeholder_text, :required => true
+      %li
+        = f.submit btn_text
+        .clearfix
