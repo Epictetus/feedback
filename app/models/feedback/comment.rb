@@ -4,6 +4,8 @@ class Feedback::Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true
   belongs_to :author, :class_name => "User", :foreign_key => "user_id"
   
+  has_comments
+  
   validates_presence_of [:user_id, :commentable_id, :commentable_type]
   
   def replies
