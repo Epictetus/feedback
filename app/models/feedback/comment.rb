@@ -10,10 +10,7 @@ class Feedback::Comment < ActiveRecord::Base
   validates_presence_of [:user_id, :commentable_id, :commentable_type]
   
   def replies
-    Feedback::Comment.where(
-      :commentable_id => id, 
-      :commentable_type => "Feedback::Comment"
-    )
+    descendants.arrange
   end
 
 end

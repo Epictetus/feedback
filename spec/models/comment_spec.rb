@@ -4,7 +4,7 @@ describe Feedback::Comment do
   before(:each) do
     @user = create(:user, name: "Bill Bixby")
     @blog_post = create(:blog_post, title: "Mr. McGee, Don't Make Me Angry")
-    @comment = Feedback::Comment.create(commentable: @blog_post, author: @user)
+    @comment = Feedback::Comment.create(:commentable => @blog_post, :author => @user)
   end
   
   it "accepts a commentable" do
@@ -16,8 +16,12 @@ describe Feedback::Comment do
   end
   
   it "can be replied to" do
-    reply = Feedback::Comment.create(commentable: @comment, author: @user)
+    reply = Feedback::Comment.create(
+      :commentable => @comment, 
+      :author => @user, 
+      :parent => @comment
+    )
     reply.commentable.should eq(@comment)
-    @comment.replies.should eq([reply])
+    @comment.replies.should eq(reply => {})
   end
 end

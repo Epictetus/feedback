@@ -13,9 +13,15 @@ class Feedback::CommentsController < ApplicationController
     @comment = Feedback::Comment.new(params[:feedback_comment])
     @comment.author = current_user
     @comment.commentable = @commentable
-    
+
     if @comment.save!
-      uri = @commentable.is_a?(Feedback::Comment) ? @commentable.root.commentable : @commentable
+      uri = if @commentable.is_a?(Feedback::Comment)
+        @comment.parent = @commentable
+        @comment.save
+        @commentable.root.commentable
+      else
+        @commentable
+      end
       redirect_to uri, :notice => "Comment saved."
     end
   end
