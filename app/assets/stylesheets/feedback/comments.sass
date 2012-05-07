@@ -1,24 +1,40 @@
+$dark-gray: #6b6b6b
+$light-gray: #cccccc
+$lighter-gray: #efefef
+
+@mixin horizontal-container
+  > ul
+    margin: 5px
+    margin-bottom: 0
+    > li
+      display: inline-block
+      margin-right: 5px
+    
+@mixin rounded-corners($radius: 5px)
+  border-radius: $radius
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius 
+
+@mixin box-shadow($h: 2px, $v: 2px, $radius: 5px, $spread: 0, $color: #6B6B6B)
+  -webkit-box-shadow: $h $v $radius $spread $color
+  -moz-box-shadow: $h $v $radius $spread $color
+  box-shadow: $h $v $radius $spread $color
+  
 .feedback-comment-widget
   
-  .community-panel
-    ul, li
-      display: inline-block
-    ul
-      margin: 0
-      padding: 5px
-    li
-      margin-right: 5px
-
+  .community-panel, .controls, .comment > .header, .comment > .footer
+    +horizontal-container
+    
   .new-comment
     form
       textarea
-        width: 100%
+        width: 555px
         height: 100px
         margin-bottom: 0
       input:invalid, textarea:invalid
         background-color: white
       input[type="submit"]
-        //@extend .pull-right
+        @extend .pull-right
         @extend .btn
         @extend .btn-primary
       ul
@@ -26,3 +42,40 @@
         margin: 0
         li
           padding: 2px
+          
+  .comments-list
+    margin-top: 21px
+    .sort-by
+      form
+        margin: 0
+        select, label
+          display: inline-block
+    .comment
+      +rounded-corners
+      border: 1px solid $dark-gray
+      margin-bottom: 21px
+      .header
+        padding: 5px
+        margin-bottom: 10px
+        .author-avatar
+          +rounded-corners(2px)
+          padding: 2px
+          border: 1px solid $light-gray
+        .author-name
+          margin-right: 275px
+        .time-ago
+          color: $light-gray
+          font-style: italic
+          float: right
+      .body, .reply
+        padding-left: 30px
+        padding-right: 30px
+        form
+          margin: 0
+          textarea
+            width: 495px
+      .footer
+        margin-top: 10px
+        border-top: 1px solid $dark-gray
+      .like-stats
+        font-size: 11px
