@@ -14,7 +14,7 @@ A Rails 3 engine which adds full-stack user feedback to your application.
 
 ## <a name="demo"></a>Skitches
 
-![New Comment](https://img.skitch.com/20120508-txqhkcxqiqwrp82hwsc1xdag19.jpg)
+![New Comment](https://img.skitch.com/20120508-8dpbm4n4myxfb4wwr98uuiqsi8.jpg)
 
 ## <a name="installation"></a>Installation
 Add the feedback gem to your `Gemfile`:
