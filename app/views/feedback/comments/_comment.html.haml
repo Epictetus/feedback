@@ -1,0 +1,52 @@
+.comment-with-replies
+  .comment
+    .header
+      %ul
+        %li
+          .author-avatar
+            = image_tag("https://si0.twimg.com/profile_images/1807338004/small_avatar_mini.jpg")
+        %li.author-name
+          %strong
+            = comment.author.name
+        %li.in-reply-to
+        %li.time-ago
+          = "#{time_ago_in_words(comment.created_at)} ago"
+      
+    .body
+      %blockquote
+        %p
+          = comment.body
+  
+    .reply{:id => "reply-to-comment-#{comment.id}-form", :style => "display: none;"}
+      = render "feedback/comments/new", :commentable => comment, :btn_text => "Reply", :placeholder_text => "Type your reply here."
+  
+    .footer
+      %ul
+        - if defined?(Feedback::Models::Likable)
+          %li
+            10 people liked this comment.
+          %li
+            .btn-group
+              %button
+                Like
+          
+        %li
+          .btn-group
+            %a.btn.btn-mini.dropdown-toggle{:href => "flag-comment-#{comment.id}-menu", :"data-toggle" => "dropdown"}
+              Flag as
+              %span.caret
+            %ul.dropdown-menu{:id => "flag-comment-#{comment.id}-menu"}
+              %li
+                = link_to "Inappropriate", "#"
+              %li
+                = link_to "Spam", "#"
+            
+        %li
+          .btn-group
+            = link_to "Reply", "#", :id => "reply-to-comment-#{comment.id}-btn", :class => "btn btn-mini reply-to-comment-btn"
+
+  - if comment.replies.any?
+    .replies
+      %blockquote
+        = render :partial => "feedback/comments/comment", :collection => comment.replies
+  

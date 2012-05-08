@@ -10,7 +10,7 @@ class Feedback::Comment < ActiveRecord::Base
   validates_presence_of [:user_id, :commentable_id, :commentable_type]
   
   def replies
-    descendants.arrange
+    descendants
   end
 
 end

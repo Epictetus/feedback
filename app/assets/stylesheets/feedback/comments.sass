@@ -50,32 +50,36 @@ $lighter-gray: #efefef
         margin: 0
         select, label
           display: inline-block
-    .comment
-      +rounded-corners
-      border: 1px solid $dark-gray
-      margin-bottom: 21px
-      .header
-        padding: 5px
-        margin-bottom: 10px
-        .author-avatar
-          +rounded-corners(2px)
-          padding: 2px
-          border: 1px solid $light-gray
-        .author-name
-          margin-right: 275px
-        .time-ago
-          color: $light-gray
-          font-style: italic
-          float: right
-      .body, .reply
-        padding-left: 30px
-        padding-right: 30px
-        form
-          margin: 0
-          textarea
-            width: 495px
-      .footer
-        margin-top: 10px
-        border-top: 1px solid $dark-gray
-      .like-stats
-        font-size: 11px
+    .comment-with-replies
+      margin-left: 10px
+      .comment
+        +rounded-corners
+        border: 1px solid $dark-gray
+        margin-bottom: 21px
+        .header
+          padding: 5px
+          margin-bottom: 10px
+          .author-avatar
+            +rounded-corners(2px)
+            padding: 2px
+            border: 1px solid $light-gray
+          .author-name
+            //margin-right: 275px
+          .time-ago
+            color: $light-gray
+            font-style: italic
+            float: right
+        .body, .reply
+          padding-left: 30px
+          padding-right: 30px
+          form
+            margin: 0
+            textarea
+              width: 98%
+        .footer
+          margin-top: 10px
+          border-top: 1px solid $dark-gray
+        .like-stats
+          font-size: 11px
+      .replies
+        margin-left: 15px
