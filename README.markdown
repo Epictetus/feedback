@@ -12,9 +12,19 @@ A Rails 3 engine which adds full-stack user feedback to your application.
 * Control feedback rules and spam filtering.
 * Manage feedback flagged as spam or inappropriate with an easy admin interface.
 
-## <a name="demo"></a>Skitches
+## <a name="demo"></a>Screenshots
 
-![New Comment](https://img.skitch.com/20120508-8dpbm4n4myxfb4wwr98uuiqsi8.jpg)
+### New Comments
+
+![New Comment](https://img.skitch.com/20120508-cs6fw8m4b2ib1tjhyywjuu1pwp.jpg)
+
+### Replying to Comments
+
+![Replying](https://img.skitch.com/20120508-n2why5mnr4x33e7unaqht343y3.jpg)
+
+### Threaded Replies
+
+![Threaded Replies](https://img.skitch.com/20120508-e675nhjfig8y3rhwsar7n5kac9.jpg)
 
 ## <a name="installation"></a>Installation
 Add the feedback gem to your `Gemfile`:
