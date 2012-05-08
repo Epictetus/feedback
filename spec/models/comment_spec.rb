@@ -22,6 +22,6 @@ describe Feedback::Comment do
       :parent => @comment
     )
     reply.commentable.should eq(@comment)
-    @comment.replies.should eq(reply => {})
+    @comment.replies.should eq([reply])
   end
 end
