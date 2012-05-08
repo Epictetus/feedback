@@ -1,0 +1,19 @@
+.feedback-comment-widget
+
+  - if defined?(Feedback::Models::Likable)
+    .community-panel
+      %ul
+        %li.like
+          %button
+            Like
+        %li.unlike
+          %button
+            Unlike
+        %li.recent-liker
+          = image_tag("https://si0.twimg.com/profile_images/1807338004/small_avatar_mini.jpg")
+        %li.like-stats
+          and 1,446 others liked this.
+
+  = render "feedback/comments/new", :commentable => commentable
+
+  = render "feedback/comments/list", :commentable => commentable

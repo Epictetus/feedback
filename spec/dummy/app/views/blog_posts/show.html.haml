@@ -39,43 +39,6 @@
         %small
           You will be asked to log in or register.
           
-    .feedback-comment-widget
+    = render "feedback/comments/widget", :commentable => @blog_post
     
-      - if defined?(Feedback::Models::Likable)
-        .community-panel
-          %ul
-            %li.like
-              %button
-                Like
-            %li.unlike
-              %button
-                Unlike
-            %li.recent-liker
-              = image_tag("https://si0.twimg.com/profile_images/1807338004/small_avatar_mini.jpg")
-            %li.like-stats
-              and 1,446 others liked this.
-
-      = render "feedback/comments/new", :commentable => @blog_post
-      
-      .comments-list
-        - comments = @blog_post.comments
-        - unless comments.empty?
-          %h3
-            = "Showing #{pluralize(comments.size, 'comment')}"
-          .controls
-            %ul
-              %li.sort-by
-                = form_tag("#") do
-                  = label_tag "sort_by", "Sort by"
-                  = select_tag "sort_by", options_for_select(["Popularity", "Rating", "Oldest first", "Newest first"])
-            
-              %li.subscribe-email
-                %i.icon-envelope
-                Subscribe by email
-            
-              %li.subscribe-rss
-                %i.icon-retweet
-                Get RSS feed
-              
-          = render :partial => "feedback/comments/comment", :collection => comments
   .span3

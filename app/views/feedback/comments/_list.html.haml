@@ -1,0 +1,21 @@
+.comments-list
+  - comments = commentable.comments
+  - unless comments.empty?
+    %h3
+      = "Showing #{pluralize(comments.size, 'comment')}"
+    .controls
+      %ul
+        %li.sort-by
+          = form_tag("#") do
+            = label_tag "sort_by", "Sort by"
+            = select_tag "sort_by", options_for_select(["Popularity", "Rating", "Oldest first", "Newest first"])
+      
+        %li.subscribe-email
+          %i.icon-envelope
+          Subscribe by email
+      
+        %li.subscribe-rss
+          %i.icon-retweet
+          Get RSS feed
+        
+    = render :partial => "feedback/comments/comment", :collection => comments
