@@ -4,6 +4,7 @@ A Rails 3 engine which adds full-stack user feedback to your application.
 
 ## <a name="features"></a>Features
 
+* Uses [HTML5 Boilerplate](https://github.com/sporkd/compass-h5bp), [Twitter Bootstrap with Compass](https://github.com/vwall/compass-twitter-bootstrap).
 * Comment on models with `has_comments`.
 * Review models with `has_reviews`.
 * Like models with `has_likes`.
@@ -11,9 +12,9 @@ A Rails 3 engine which adds full-stack user feedback to your application.
 * Control feedback rules and spam filtering.
 * Manage feedback flagged as spam or inappropriate with an easy admin interface.
 
-## <a name="demo"></a>Screencast
+## <a name="demo"></a>Skitches
 
-Coming soon...
+![New Comment](https://img.skitch.com/20120508-txqhkcxqiqwrp82hwsc1xdag19.jpg)
 
 ## <a name="installation"></a>Installation
 Add the feedback gem to your `Gemfile`:
