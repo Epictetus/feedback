@@ -20,11 +20,11 @@ Add the feedback gem to your `Gemfile`:
 
     gem 'feedback', :git => "git://github.com/colvint/feedback.git"
 
-Run:
+Install the gem with:
 
     $ bundle install
 
-And then run:
+And then run to copy feedback migrations into your app:
 
     $ rake feedback_engine:install:migrations
 
@@ -32,7 +32,15 @@ Then run migrations to create comments:
 
     $ rake db:migrate
     
-Let's say you're building a blog app. Add the comment widget to your blog's show view:
+Make your model commentable with `has_comments`:
+
+```ruby
+class BlogPost < ActiveRecord::Base
+  has_comments
+  attr_accessible :body, :title, :user_id
+end
+```
+Add a comment widget to your app's view like this:
 
 ```ruby
 = render "feedback/comments/widget", :commentable => @blog_post
