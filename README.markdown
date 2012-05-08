@@ -26,4 +26,12 @@ Run:
 
 And then run:
 
-    $ rails g feedback:install
+    $ rake feedback_engine:install:migrations
+
+Then run migrations to create comments:
+
+    $ rake db:migrate
+    
+Let's say you're building a blog app. Add the comment widget to your blog's show view:
+
+`= render "feedback/comments/widget", :commentable => @blog_post`
