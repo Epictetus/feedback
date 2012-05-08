@@ -34,4 +34,6 @@ Then run migrations to create comments:
     
 Let's say you're building a blog app. Add the comment widget to your blog's show view:
 
-`= render "feedback/comments/widget", :commentable => @blog_post`
+```ruby
+= render "feedback/comments/widget", :commentable => @blog_post
+```
