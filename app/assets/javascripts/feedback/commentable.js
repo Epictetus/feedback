@@ -1,4 +1,6 @@
 jQuery(document).ready(function($) {
+  
+  //control for comment reply button
   $('.reply-to-comment-btn').click(function(e) {
     var commentID = /reply-to-comment-(\d*)-btn/.exec(this.id)[1], 
         replyFormID = '#reply-to-comment-' + commentID + '-form', 
@@ -14,5 +16,10 @@ jQuery(document).ready(function($) {
     
     //prevent link from being followed
     e.preventDefault();
+  });
+  
+  //control for comment list sort by select
+  $('#sort_comments_by').change(function(e) {
+    $(this).parents('form').submit();
   });
 });

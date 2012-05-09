@@ -1,21 +1,16 @@
 .comments-list
-  - comments = commentable.comments
+  - comments = commentable.comments.all(:order => params[:sort_comments_by])
   - unless comments.empty?
     %h3
       = "Showing #{pluralize(comments.size, 'comment')}"
     .controls
       %ul
         %li.sort-by
-          = form_tag("#") do
+          = form_tag("", :method => :get) do
             = label_tag "sort_by", "Sort by"
-            = sort_by_select_tag
+            = sort_by_select_tag(:selected => params[:sort_comments_by])
       
-        %li.subscribe-email
-          %i.icon-envelope
-          Subscribe by email
-      
-        %li.subscribe-rss
-          %i.icon-retweet
+        %li.get-feed
           = link_to "Get ATOM feed", feedback_comments_path_for(@blog_post, :format => :atom)
         
     = render :partial => "feedback/comments/comment", :collection => comments

@@ -11,10 +11,10 @@ module Feedback::CommentsHelper
   end
   
   def sort_by_select_tag(options = {})
-    criteria = ["Oldest first", "Newest first"]
+    criteria = [["Oldest first", "created_at"], ["Newest first", "created_at DESC"]]
     criteria.unshift("Rating") if defined?(Feedback::Models::Reviewable)
     criteria.unshift("Popularity") if defined?(Feedback::Models::Likable)
-    select_tag "sort_by", options_for_select(criteria)
+    select_tag "sort_comments_by", options_for_select(criteria, options[:selected])
   end
   
 end

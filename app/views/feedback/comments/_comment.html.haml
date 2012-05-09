@@ -48,5 +48,5 @@
   - if comment.replies.any?
     .replies
       %blockquote
-        = render :partial => "feedback/comments/comment", :collection => comment.replies
+        = render :partial => "feedback/comments/comment", :collection => comment.replies.all(:order => params[:sort_comments_by])
   

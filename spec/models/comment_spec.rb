@@ -5,15 +5,23 @@ describe Feedback::Comment do
     @user = create(:user, name: "Bill Bixby")
     @blog_post = create(:blog_post, title: "Mr. McGee, Don't Make Me Angry")
     @comment = Feedback::Comment.create(:commentable => @blog_post, :author => @user)
-    @reply = Feedback::Comment.create(
+    @reply_1 = Feedback::Comment.create(
       :commentable => @comment, 
       :author => @user, 
-      :parent => @comment
+      :parent => @comment, 
+      :body => "first reply"
+    )
+    @reply_2 = Feedback::Comment.create(
+      :commentable => @comment, 
+      :author => @user, 
+      :parent => @comment, 
+      :body => "second reply"
     )
     @reply_to_reply = Feedback::Comment.create(
-      :commentable => @reply, 
+      :commentable => @reply_1, 
       :author => @user, 
-      :parent => @reply
+      :parent => @reply_1, 
+      :body => "reply to the first reply"
     )
   end
   
@@ -26,8 +34,8 @@ describe Feedback::Comment do
   end
   
   it "can be replied to" do
-    @reply.commentable.should eq(@comment)
-    @comment.replies.should eq([@reply])
+    @reply_1.commentable.should eq(@comment)
+    @comment.replies.should eq([@reply_1, @reply_2])
   end
   
 end
