@@ -11,6 +11,6 @@
             = sort_by_select_tag(:selected => params[:sort_comments_by])
       
         %li.get-feed
-          = link_to "Get ATOM feed", feedback_comments_path_for(@blog_post, :format => :atom)
+          = link_to image_tag("feedback/icons/feed.png", :alt => "Get ATOM feed"), feedback_comments_path_for(@blog_post, :format => :atom)
         
     = render :partial => "feedback/comments/comment", :collection => comments
