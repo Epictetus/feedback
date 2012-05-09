@@ -1,6 +1,6 @@
 class Feedback::CommentsController < ApplicationController
   
-  respond_to :html, :json
+  respond_to :html, :json, :atom
   
   before_filter :find_commentable, :only => [:index, :create]
   before_filter :authenticate_user!, :only => [:create]
