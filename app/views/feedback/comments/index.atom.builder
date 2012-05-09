@@ -4,10 +4,9 @@ atom_feed do |feed|
 
   @comments.each do |root_comment|
     root_comment.subtree.each do |comment|
-      feed.entry(@commentable) do |entry|
+      feed.entry(comment, :url => polymorphic_url(@commentable, :anchor => "comment-#{comment.id}")) do |entry|
         entry.title(truncate(comment.body))
         entry.content(comment.body, :type => 'text')
-
         entry.author do |author|
           author.name
         end
