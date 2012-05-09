@@ -8,7 +8,7 @@
         %li.sort-by
           = form_tag("#") do
             = label_tag "sort_by", "Sort by"
-            = select_tag "sort_by", options_for_select(["Popularity", "Rating", "Oldest first", "Newest first"])
+            = sort_by_select_tag
       
         %li.subscribe-email
           %i.icon-envelope
