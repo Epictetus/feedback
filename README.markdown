@@ -1,6 +1,9 @@
 # Feedback
 
-A Rails 3 engine which adds full-stack user feedback to your application.
+Add commenting, reviewing, rating and liking features to your Rails 3 app 
+with the Feedback engine. Inspired by Devise, Drupal, Refinery CMS and 
+Joomla, this Rails engine is one in a series designed to address very 
+common high-level use cases.
 
 ## <a name="features"></a>Features
 
@@ -8,7 +11,7 @@ A Rails 3 engine which adds full-stack user feedback to your application.
 * Comment on models with `has_comments`.
 * Review models with `has_reviews`.
 * Like models with `has_likes`.
-* Use view helpers to add pre-built feedback UI elements to your pages.
+* Comes with pre-built feedback partials ready for use in your views.
 * Control feedback rules and spam filtering.
 * Manage feedback flagged as spam or inappropriate with an easy admin interface.
 
@@ -35,15 +38,15 @@ Install the gem with:
 
     $ bundle install
 
-And then run to copy feedback migrations into your app:
+Copy feedback migrations into your app:
 
     $ rake feedback_engine:install:migrations
 
-Then run migrations to create comments:
+Run migrations to create comments:
 
     $ rake db:migrate
     
-Make your model commentable with `has_comments`:
+Make any models commentable with `has_comments`:
 
 ```ruby
 class BlogPost < ActiveRecord::Base
@@ -51,7 +54,7 @@ class BlogPost < ActiveRecord::Base
   attr_accessible :body, :title, :user_id
 end
 ```
-Add a comment widget to your app's view like this:
+Add a comment widget to any app view:
 
 ```ruby
 = render "feedback/comments/widget", :commentable => @blog_post
