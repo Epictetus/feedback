@@ -1,7 +1,8 @@
 module Feedback::CommentsHelper
   
-  def feedback_comments_path_for(commentable)
-    feedback_comments_url_for(commentable, :routing_type => :path)
+  def feedback_comments_path_for(commentable, options = {})
+    options[:routing_type] ||= :path
+    polymorphic_url([commentable, Feedback::Comment], options)
   end
   
   def feedback_comments_url_for(commentable, options = {})
