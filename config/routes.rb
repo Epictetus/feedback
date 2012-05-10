@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     match "/feedback/comment/:comment_id/feedback/comments" => "feedback/comments#create", 
             :via => :post
   end
-  namespace :admin do
-    namespace :feedback do
+  namespace :feedback do
+    namespace :admin do
       resources :comments, :only => [:index]
     end
   end

@@ -10,7 +10,7 @@ describe "routes for Commentables" do
   it "generates commentable_routes_for named routes" do
     blog_post_feedback_comments_path(@blog_post).should == "/blog_post/1/feedback/comments"
     feedback_comment_feedback_comments_path(@comment).should == "/feedback/comment/1/feedback/comments"
-    admin_feedback_comments_path.should == "/admin/feedback/comments"
+    feedback_admin_comments_path.should == "/feedback/admin/comments"
   end
   
 end
