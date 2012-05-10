@@ -9,12 +9,6 @@ module Feedback
             end
           end
         end
-        scope :as => "feedback_comment_feedback_comments" do
-          match "/feedback/comment/:comment_id/feedback/comments" => "feedback/comments#index", 
-                  :via => :get
-          match "/feedback/comment/:comment_id/feedback/comments" => "feedback/comments#create", 
-                  :via => :post
-        end
       end
     end
   end
