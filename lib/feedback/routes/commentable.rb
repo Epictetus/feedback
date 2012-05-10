@@ -5,7 +5,7 @@ module Feedback
         models.each do |model|
           resources model, :only => [] do
             namespace :feedback do
-              resources :comments, :only => [:index, :create]
+              resources :comments, :only => [:index, :create, :update]
             end
           end
         end

@@ -25,7 +25,7 @@ describe Feedback::CommentsController do
       post(
         :create, 
         :feedback_comment => {:body => "This is a great post"}, 
-        :blog_post_id => 1
+        :blog_post_id => @blog_post.id
       )
     end
     
@@ -71,5 +71,25 @@ describe Feedback::CommentsController do
       assigns(:comment)
     end
     
+  end
+  
+  describe "PUT update" do
+    before(:each) do
+      @blog_post = create(:blog_post)
+      @comment = create(:comment, :commentable => @blog_post)
+      @user = create(:user)
+      sign_in @user
+    end
+    
+    it "flags comments" do
+      put(
+        :update, 
+        :id => @comment.id, 
+        :blog_post_id => @blog_post.id, 
+        :feedback_comment => { :status => "inappropriate" }
+      )
+      @comment.reload.status.should eq("inappropriate")
+      response.should redirect_to(@comment.root.commentable)
+    end
   end
 end

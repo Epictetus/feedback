@@ -12,5 +12,9 @@ class Feedback::Comment < ActiveRecord::Base
   def replies
     children
   end
+  
+  def root_commentable
+    root.commentable
+  end
 
 end
