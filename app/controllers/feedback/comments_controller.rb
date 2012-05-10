@@ -1,4 +1,4 @@
-class Feedback::CommentsController < ApplicationController
+class Feedback::CommentsController < ActionController::Base
   
   include Feedback::CommentsHelper
   
