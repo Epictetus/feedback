@@ -12,6 +12,7 @@ gemspec
 
 group :development do
   gem "devise"
+  gem "cancan"
   gem "jquery-rails"
   gem "haml-rails"
 end

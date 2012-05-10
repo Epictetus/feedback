@@ -5,6 +5,7 @@ require 'rails/all'
 Bundler.require
 
 require "ancestry"
+require "cancan"
 require "compass-rails"
 require "compass-h5bp"
 require "compass_twitter_bootstrap"
