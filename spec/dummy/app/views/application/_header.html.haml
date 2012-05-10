@@ -15,3 +15,8 @@
             = link_to "Some Engine"
           %li
             = link_to "Another Engine"
+            
+        %ul.nav.pull-right
+          %li
+            = link_to_if(current_user, "Logout", destroy_user_session_path, :method => :delete)
+            
