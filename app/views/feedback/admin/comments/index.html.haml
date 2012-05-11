@@ -1,0 +1,29 @@
+%section#comment-admin
+  .page-header
+    %h1
+      Comment Admin
+    
+  %table#comment-list.table.table-bordered.table-striped.data-table
+
+    %thead
+      %tr
+        %th
+          Status
+        %th
+          User
+        %th
+          Commentable
+        %th
+          Body
+
+    %tbody
+      - @comments.each do |comment|
+        %tr
+          %td
+            = comment.status
+          %td
+            = comment.author.name
+          %td
+            = comment.commentable.id
+          %td
+            = truncate(comment.body)
