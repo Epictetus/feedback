@@ -29,6 +29,10 @@ common high-level use cases.
 
 ![Threaded Replies](https://img.skitch.com/20120508-e675nhjfig8y3rhwsar7n5kac9.jpg)
 
+### Admin Backend
+
+![Admin Backend](https://img.skitch.com/20120511-1wbeawdnkpic2iukk9uneg1h4k.jpg)
+
 ## <a name="installation"></a>Installation
 Add the feedback gem to your `Gemfile`:
 
