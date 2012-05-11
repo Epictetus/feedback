@@ -40,10 +40,22 @@ jQuery(document).ready(function($) {
 
   /* Add a select menu (for filtering) in each TH element in the table footer */
   $("tfoot th").each( function ( i ) {
-    this.innerHTML = fnCreateSelect( oTable.fnGetColumnData(i) );
+    this.innerHTML = Commentable.fnCreateSelect( oTable.fnGetColumnData(i) );
     $('select', this).change( function () {
       oTable.fnFilter( $(this).val(), i );
     });
   });
-  
+
 });
+
+Commentable = {
+  fnCreateSelect: function ( aData )
+  {
+    var r='<select><option value=""></option>', i, iLen = aData.length;
+    for ( i=0 ; i<iLen ; i++ )
+    {
+      r += '<option value="'+aData[i]+'">'+aData[i]+'</option>';
+    }
+    return r+'</select>';
+  }
+}
