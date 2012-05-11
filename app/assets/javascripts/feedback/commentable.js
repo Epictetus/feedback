@@ -22,4 +22,19 @@ jQuery(document).ready(function($) {
   $('#sort_comments_by').change(function(e) {
     $(this).parents('form').submit();
   });
+  
+  $('table#comment-list').dataTable( {
+    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>", 
+    "sPaginationType": "bootstrap"
+  });
+  
+  $.extend( $.fn.dataTableExt.oStdClasses, {
+    "sWrapper": "dataTables_wrapper form-inline"
+  });
+  
+  $.extend( $.fn.dataTableExt.oStdClasses, {
+    "sSortAsc": "header headerSortDown",
+    "sSortDesc": "header headerSortUp",
+    "sSortable": "header"
+  });
 });
