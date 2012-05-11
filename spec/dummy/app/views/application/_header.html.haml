@@ -9,10 +9,10 @@
     
       .nav-collapse.collapse
         %ul.nav
-          %li.active
+          %li{:class => "#{'active' if request.original_fullpath == blog_posts_path}"}
             = link_to "Blog Posts", blog_posts_path
           - if can? :index, Feedback::Comment
-            %li
+            %li{:class => "#{'active' if request.original_fullpath == feedback_admin_comments_path}"}
               = link_to "Comments Admin", feedback_admin_comments_path
             
         %ul.nav.pull-right
