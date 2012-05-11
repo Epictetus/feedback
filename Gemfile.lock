@@ -10,9 +10,12 @@ PATH
   specs:
     feedback (0.0.1)
       ancestry
+      coffee-rails
+      compass-rails
       haml-rails
       jquery-rails
       rails (~> 3.2.3)
+      sass-rails
 
 GEM
   remote: http://rubygems.org/
@@ -209,9 +212,7 @@ PLATFORMS
 DEPENDENCIES
   cancan
   capybara
-  coffee-rails
   compass-h5bp
-  compass-rails
   compass_twitter_bootstrap!
   debugger
   devise
@@ -223,6 +224,5 @@ DEPENDENCIES
   jquery-rails
   rb-fsevent
   rspec-rails
-  sass-rails
   sqlite3
   uglifier
