@@ -56,7 +56,7 @@ Include feedback javascript assets in your `app/assets/javascripts/application.j
 
 Include feedback stylesheet assets in your `app/assets/stylesheets/application.css.sass` with this:
 
-    @import feedback/all
+    @import feedback
 
 Make any models commentable with `has_comments`:
 
