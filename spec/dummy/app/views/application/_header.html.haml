@@ -11,10 +11,9 @@
         %ul.nav
           %li.active
             = link_to "Blog Posts", blog_posts_path
-          %li
-            = link_to "Some Engine"
-          %li
-            = link_to "Another Engine"
+          - if can? :index, Feedback::Comment
+            %li
+              = link_to "Comments Admin", feedback_admin_comments_path
             
         %ul.nav.pull-right
           %li

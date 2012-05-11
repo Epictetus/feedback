@@ -3,11 +3,11 @@
     .span12
       %ul.breadcrumb
         %li
-          = link_to "Home", blog_posts_path
+          = link_to "Blog Posts", blog_posts_path
           %span.divider
             = "/"
         %li.active
-          Blog Posts
+          = @blog_post.title
       
 .row
   .span6.offset3
@@ -15,7 +15,7 @@
       %h2
         = @blog_post.title
         %small
-          by Bobby Brown
+          = "by #{@blog_post.author.name}"
           %i.icon-user
     
     %ul.thumbnails
