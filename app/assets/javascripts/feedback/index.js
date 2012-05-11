@@ -1,5 +1,4 @@
-//= require ./bootstrap
+//= require bootstrap-all
 //= require ./commentable
-//= require ./datatables/jquery.dataTables.min
-//= require ./datatables/paging
-//= require ./datatables/filtering
+//= require dataTables/jquery.dataTables
+//= require dataTables/jquery.dataTables.bootstrap

@@ -14,6 +14,7 @@ require "feedback"
 require "haml-rails"
 require "html5-rails"
 require "jquery-rails"
+require "jquery-datatables-rails"
 require "sass-rails"
 
 module Dummy
