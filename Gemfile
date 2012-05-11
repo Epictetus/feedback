@@ -26,11 +26,9 @@ group :test do
 end
 
 group :assets do
-  gem "coffee-rails"
   gem "compass-h5bp"
-  gem "compass-rails"
+  #need to figure out how to move this to gemspec (can't do it with the :git => "")
   gem "compass_twitter_bootstrap", :git => "https://github.com/vwall/compass-twitter-bootstrap.git"
-  gem "sass-rails"
   gem "html5-rails"
   gem "uglifier"
 end
