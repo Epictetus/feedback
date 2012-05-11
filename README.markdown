@@ -49,7 +49,15 @@ Copy feedback migrations into your app:
 Run migrations to create comments:
 
     $ rake db:migrate
-    
+
+Include feedback javascript assets in your `app/assets/javascripts/application.js` with this:
+
+    //= require feedback
+
+Include feedback stylesheet assets in your `app/assets/stylesheets/application.css.sass` with this:
+
+    @import feedback/all
+
 Make any models commentable with `has_comments`:
 
 ```ruby
