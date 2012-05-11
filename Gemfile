@@ -30,7 +30,7 @@ group :assets do
   #need to figure out how to move this to gemspec (can't do it with the :git => "")
   gem "compass_twitter_bootstrap", :git => "https://github.com/vwall/compass-twitter-bootstrap.git"
   gem "html5-rails"
-  gem "jquery-datatables-rails"
+  gem "jquery-datatables-rails", :path => "../jquery-datatables-rails"
   gem "uglifier"
 end
 
