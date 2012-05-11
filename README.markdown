@@ -31,7 +31,7 @@ common high-level use cases.
 
 ### Admin Backend
 
-![Admin Backend](https://img.skitch.com/20120511-1wbeawdnkpic2iukk9uneg1h4k.jpg)
+![Admin Backend](https://img.skitch.com/20120511-un49fs3niepqxqpmxdqp5ewam.jpg)
 
 ## <a name="installation"></a>Installation
 Add the feedback gem to your `Gemfile`:
