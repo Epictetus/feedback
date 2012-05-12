@@ -34,13 +34,13 @@
           %td
             = comment.author.name
           %td
-            = link_to truncate(comment.commentable.to_s), comment.root_commentable, :target => "_blank"
+            = truncate(comment.commentable.to_s)
           %td
             = truncate(comment.body)
             
     %tfoot
       %tr
-        %th
-        %th
+        %th.filterable
+        %th.filterable
         %th
         %th

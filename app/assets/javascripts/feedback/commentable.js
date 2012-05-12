@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
   });
 
   /* Add a select menu (for filtering) in each TH element in the table footer */
-  $("tfoot th").each( function ( i ) {
+  $("tfoot th.filterable").each( function ( i ) {
     this.innerHTML = Commentable.fnCreateSelect( oTable.fnGetColumnData(i) );
     $('select', this).change( function () {
       oTable.fnFilter( $(this).val(), i );
