@@ -1,0 +1,11 @@
+- btn_text    ||= 'Actions'
+- btn_class   ||= ''
+- action_list ||= []
+
+%a.btn.dropdown-toggle{:href => "action-#{id}-menu", :"data-toggle" => "dropdown", :class => btn_class}
+  = btn_text
+  %span.caret
+%ul.dropdown-menu{:id => "action-#{id}-menu"}
+  - action_list.each do |action|
+    %li
+      = link_to action[:name], action[:url], action[:options]

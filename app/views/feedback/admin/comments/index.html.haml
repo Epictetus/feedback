@@ -17,6 +17,7 @@
 
     %thead
       %tr
+        %th.no-sort.no-search
         %th
           Status
         %th
@@ -25,10 +26,13 @@
           Commentable
         %th
           Body
+        %th.no-sort.no-search
 
     %tbody
       - @comments.each do |comment|
         %tr
+          %td
+            = check_box_tag "selected-comments[]", "#{comment.id}"
           %td
             = comment.status
           %td
@@ -37,10 +41,18 @@
             = truncate(comment.commentable.to_s)
           %td
             = truncate(comment.body)
+          %td
+            .btn-group
+              = render "feedback/admin/comments/flag_comment_button", :comment => comment
+              = link_to feedback_admin_comment_path(comment), :method => :delete, :confirm => "Really delete this comment?", :class => "btn btn-danger" do
+                %i.icon-trash.icon-white
+                Delete
             
     %tfoot
       %tr
+        %th
         %th.filterable
         %th.filterable
+        %th
         %th
         %th

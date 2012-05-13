@@ -7,7 +7,7 @@ class Ability
 
     # admins can access 
     if user.admin?
-      can :index, Feedback::Comment
+      can :manage, Feedback::Comment
     end
     
   end

@@ -25,25 +25,28 @@ jQuery(document).ready(function($) {
 
   var oTable = $('table#comment-list').dataTable( {
     "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>", 
-    "sPaginationType": "bootstrap"
+    "sPaginationType": "bootstrap", 
+    "aoColumnDefs": [
+      { "bSortable": false, "aTargets": ['no-sort'] }, 
+      { "bSearchable": false, "aTargets": ['no-search'] }
+    ]
   });
 
   $.extend( $.fn.dataTableExt.oStdClasses, {
-    "sWrapper": "dataTables_wrapper form-inline"
-  });
-
-  $.extend( $.fn.dataTableExt.oStdClasses, {
+    "sWrapper": "dataTables_wrapper form-inline", 
     "sSortAsc": "header headerSortDown",
     "sSortDesc": "header headerSortUp",
     "sSortable": "header"
   });
 
   /* Add a select menu (for filtering) in each TH element in the table footer */
-  $("tfoot th.filterable").each( function ( i ) {
-    this.innerHTML = Commentable.fnCreateSelect( oTable.fnGetColumnData(i) );
-    $('select', this).change( function () {
-      oTable.fnFilter( $(this).val(), i );
-    });
+  $("tfoot th").each( function ( i ) {
+    if($(this).hasClass('filterable')){
+      this.innerHTML = Commentable.fnCreateSelect( oTable.fnGetColumnData(i) );
+      $('select', this).change( function () {
+        oTable.fnFilter( $(this).val(), i );
+      });
+    }
   });
 
 });
@@ -51,11 +54,11 @@ jQuery(document).ready(function($) {
 Commentable = {
   fnCreateSelect: function ( aData )
   {
-    var r='<select><option value=""></option>', i, iLen = aData.length;
-    for ( i=0 ; i<iLen ; i++ )
+    var r = '<select><option value=""></option>', i, iLen = aData.length;
+    for (i = 0; i < iLen; i++)
     {
-      r += '<option value="'+aData[i]+'">'+aData[i]+'</option>';
+      r += '<option value="' + aData[i] + '">' + aData[i] + '</option>';
     }
-    return r+'</select>';
+    return r + '</select>';
   }
 }

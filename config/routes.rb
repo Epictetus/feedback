@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   namespace :feedback do
     namespace :admin do
-      resources :comments, :only => [:index]
+      resources :comments, :only => [:index, :update, :destroy]
     end
   end
 end

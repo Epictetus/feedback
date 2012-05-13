@@ -8,9 +8,12 @@ describe "routes for Commentables" do
   end
   
   it "generates commentable_routes_for named routes" do
-    blog_post_feedback_comments_path(@blog_post).should == "/blog_post/1/feedback/comments"
-    feedback_comment_feedback_comments_path(@comment).should == "/feedback/comment/1/feedback/comments"
-    feedback_admin_comments_path.should == "/feedback/admin/comments"
+   { :get => blog_post_feedback_comments_path(@blog_post) }.
+      should route_to(
+        :controller => "feedback/comments", 
+        :action => "index", 
+        :blog_post_id => "#{@blog_post.id}"
+      )
   end
   
 end

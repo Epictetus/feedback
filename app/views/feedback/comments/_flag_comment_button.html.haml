@@ -1,0 +1,5 @@
+- action_list = []
+- ["inappropriate", "spam"].each do |status|
+  - action_list << {:name => status.capitalize, :url => polymorphic_url([comment.root_commentable, comment], :routing_type => :path, :feedback_comment => { :status => status }), :options => {:method => :put} }
+
+= render "feedback/shared/action_button", :btn_text => "Flag as", :btn_class => "btn-mini", :action_list => action_list, :id => comment.id

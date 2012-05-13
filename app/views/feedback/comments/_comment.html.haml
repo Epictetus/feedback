@@ -37,14 +37,8 @@
                   Like
           %li
             .btn-group
-              %a.btn.btn-mini.dropdown-toggle{:href => "flag-comment-#{comment.id}-menu", :"data-toggle" => "dropdown"}
-                Flag as
-                %span.caret
-              %ul.dropdown-menu{:id => "flag-comment-#{comment.id}-menu"}
-                - ["inappropriate", "spam"].each do |status|
-                  %li
-                    = link_to status.capitalize, polymorphic_url([comment.root_commentable, comment], :routing_type => :path, :feedback_comment => { :status => status }), :method => :put
-          %li
+              = render "feedback/comments/flag_comment_button", :comment => comment, :btn_class => "btn-mini"
+          %li.pull-right
             .btn-group
               = link_to "Reply", "#", :id => "reply-to-comment-#{comment.id}-btn", :class => "btn btn-mini reply-to-comment-btn"
 

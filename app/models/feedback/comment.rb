@@ -9,6 +9,12 @@ class Feedback::Comment < ActiveRecord::Base
   
   validates_presence_of [:user_id, :commentable_id, :commentable_type]
   
+  #permanent_records convenience methods
+  default_scope where(:deleted_at => nil)
+  def self.deleted
+    self.unscoped.where('deleted_at IS NOT NULL')
+  end
+  
   def to_s
     body
   end
