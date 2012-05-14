@@ -5,4 +5,6 @@
 - if comment.status
   - action_list << {:name => "Un-flag", :url => feedback_admin_comment_path(comment, :feedback_comment => {:status => nil} ), :options => {:method => :put} }
 
+- action_list << {:name => "View Comment", :url => feedback_admin_comment_path(comment) }
+
 = render "feedback/shared/action_button", :btn_text => "Actions", :action_list => action_list, :id => comment.id
