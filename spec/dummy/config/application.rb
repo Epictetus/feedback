@@ -15,7 +15,6 @@ require "haml-rails"
 require "html5-rails"
 require "jquery-rails"
 require "jquery-datatables-rails"
-require "permanent_records"
 require "sass-rails"
 
 module Dummy

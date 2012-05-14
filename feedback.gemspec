@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency "haml-rails"
   s.add_dependency "jquery-rails"
   s.add_dependency "rails", "~> 3.2.3"
-  s.add_dependency "permanent_records"
   s.add_dependency "sass-rails"
   
 end

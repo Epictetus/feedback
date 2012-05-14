@@ -15,7 +15,6 @@ group :development do
   gem "cancan"
   gem "jquery-rails"
   gem "haml-rails"
-  gem "permanent_records", :git => "https://github.com/JackDanger/permanent_records.git"
 end
 
 group :test do
