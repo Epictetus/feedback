@@ -1,0 +1,9 @@
+.row
+  .span12
+    %ul.breadcrumb
+      %li
+        = link_to "Comments Admin", feedback_admin_comments_path
+        %span.divider
+          = "/"
+      %li.active
+        = "View Comment" if @comment
