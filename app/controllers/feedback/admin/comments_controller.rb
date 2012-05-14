@@ -1,25 +1,39 @@
 class Feedback::Admin::CommentsController < Feedback::ApplicationController
   
+  include ActionView::Helpers::TextHelper
+  
   before_filter :authenticate_user!
+  before_filter :load_comments, :except => [:index, :mass_assign]
   
   def index
     authorize! :index, Feedback::Comment
-    @comments = Feedback::Comment.all
+    @comments = params[:with_deleted] ? Feedback::Comment.with_deleted : Feedback::Comment.all
   end
   
   def update
     authorize! :update, Feedback::Comment
-    @comment = Feedback::Comment.find(params[:id])
-    if @comment.update_attributes(params[:feedback_comment])
+    if @comments.each{ |c| c.update_attributes(params[:feedback_comment]) }
       redirect_to feedback_admin_comments_path, :notice => "Comment updated."
     end
   end
   
   def destroy
     authorize! :destroy, Feedback::Comment
-    @comment = Feedback::Comment.find(params[:id])
-    if @comment.destroy
-      redirect_to feedback_admin_comments_path, :notice => "Comment deleted."
+    if @comments.each(&:soft_delete)
+      redirect_to feedback_admin_comments_path, :notice => "Deleted #{pluralize(@comments.size, 'comment')}."
     end
+  end
+  
+  def mass_assign
+    authorize! :manage, Feedback::Comment
+    @comments = Feedback::Comment.unscoped.find(params[:selected_ids])
+    self.send(params[:commit])
+  end
+  
+  private
+  
+  def load_comments
+    authorize! :manage, Feedback::Comment
+    @comments = [Feedback::Comment.unscoped.find(params[:id])]
   end
 end

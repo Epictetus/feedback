@@ -9,6 +9,7 @@ describe Feedback::Admin::CommentsController do
       @admin = create(:user, :admin => true)
       @blog_post = create(:blog_post)
       @comment = create(:comment, :commentable => @blog_post)
+      @deleted_comment = create(:comment, :deleted_at => Time.now)
     end
     
     it "should deny access to non-admins" do
@@ -17,11 +18,16 @@ describe Feedback::Admin::CommentsController do
       response.should redirect_to(root_path)
     end
     
-    it "assigns @comments and renders index template" do
+    it "assigns non-deleted comments" do
       sign_in @admin
       get :index
       assigns(:comments).should eq([@comment])
-      response.should render_template("index")
+    end
+    
+    it "optionally assigns deleted comments" do
+      sign_in @admin
+      get :index, :with_deleted => true
+      assigns(:comments).should eq([@comment, @deleted_comment])
     end
     
   end
@@ -55,14 +61,52 @@ describe Feedback::Admin::CommentsController do
       response.should redirect_to(feedback_admin_comments_path)
       @comment.reload.status.should eq("inappropriate")
     end
-
-    it "delete comments" do
+    
+    it "flags multiple comments" do
+      sign_in @admin
+      another_comment = create(:comment)
+      Feedback::Comment.count.should eq(2)
+      post(
+        :mass_assign, 
+        :commit => "update", 
+        :selected_ids => [@comment.id, another_comment.id], 
+        :feedback_comment => { :status => "spam" }
+      )
+      response.should redirect_to(feedback_admin_comments_path)
+      Feedback::Comment.count.should eq(2)
+      @comment.reload.status.should eq("spam")
+      another_comment.reload.status.should eq("spam")
+    end
+    
+    it "deletes individual comments" do
       sign_in @admin
       Feedback::Comment.count.should eq(1)
       delete(:destroy, :id => @comment.id)
       response.should redirect_to(feedback_admin_comments_path)
       Feedback::Comment.count.should eq(0)
     end
+  
+    it "deletes multiple comments" do
+      sign_in @admin
+      another_comment = create(:comment)
+      Feedback::Comment.count.should eq(2)
+      post(:mass_assign, :commit => "destroy", :selected_ids => [@comment.id, another_comment.id])
+      response.should redirect_to(feedback_admin_comments_path)
+      Feedback::Comment.count.should eq(0)
+    end
+    
+    it "undeletes individual comments" do
+      sign_in @admin
+      deleted_comment = create(:comment, :deleted_at => Time.now)
+      put(
+        :update, 
+        :id => deleted_comment.id, 
+        :feedback_comment => { :deleted_at => nil }
+      )
+      response.should redirect_to(feedback_admin_comments_path)
+      deleted_comment.reload.deleted?.should eq(false)
+    end
+    
   end
 
 end

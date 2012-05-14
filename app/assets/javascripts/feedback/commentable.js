@@ -24,7 +24,7 @@ jQuery(document).ready(function($) {
   });
 
   var oTable = $('table#comment-list').dataTable( {
-    "sDom": "<'row'<'span6'l><'span6'f>r>t<'row'<'span6'i><'span6'p>>", 
+    "sDom": "<'row'<'span2'l><'span4 toolbar'><'span6'f>r>t<'row'<'span6'i><'span6'p>>", 
     "sPaginationType": "bootstrap", 
     "aoColumnDefs": [
       { "bSortable": false, "aTargets": ['no-sort'] }, 
@@ -39,7 +39,7 @@ jQuery(document).ready(function($) {
     "sSortable": "header"
   });
 
-  /* Add a select menu (for filtering) in each TH element in the table footer */
+  // Add a select menu (for filtering) in each TH element in the table footer
   $("tfoot th").each( function ( i ) {
     if($(this).hasClass('filterable')){
       this.innerHTML = Commentable.fnCreateSelect( oTable.fnGetColumnData(i) );
@@ -48,17 +48,36 @@ jQuery(document).ready(function($) {
       });
     }
   });
-
+  
+  // build the toolbar
+  $(".toolbar").html(Commentable.toolbarContent());
+  
+  /*
+  // enable delete comment button
+  $('#delete-comments a').click(function (e) {
+    $('#comment-list input[type=checkbox]').serialize();
+    
+    $('#delete-comments form').appendsubmit();
+    e.preventDefault();
+  });
+  */
 });
 
 Commentable = {
-  fnCreateSelect: function ( aData )
-  {
+  fnCreateSelect: function ( aData ){
     var r = '<select><option value=""></option>', i, iLen = aData.length;
     for (i = 0; i < iLen; i++)
     {
       r += '<option value="' + aData[i] + '">' + aData[i] + '</option>';
     }
     return r + '</select>';
+  }, 
+  
+  toolbarContent: function () {
+    var content = '';
+    content += '<div class="btn-group delete-comments">';
+    content += '<button name="commit" value="destroy" type="submit" class="btn btn-danger" data-confirm="Really delete the selected comments?" data-method="delete"><i class="icon-trash icon-white"></i></a>';
+    content += '</div>';
+    return content;
   }
 }

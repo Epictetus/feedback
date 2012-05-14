@@ -2,4 +2,7 @@
 - (["inappropriate", "spam"] - [comment.status]).each do |status|
   - action_list << {:name => "Flag as #{status}", :url => feedback_admin_comment_path(comment, :feedback_comment => {:status => status} ), :options => {:method => :put} }
 
+- if comment.status
+  - action_list << {:name => "Un-flag", :url => feedback_admin_comment_path(comment, :feedback_comment => {:status => nil} ), :options => {:method => :put} }
+
 = render "feedback/shared/action_button", :btn_text => "Actions", :action_list => action_list, :id => comment.id

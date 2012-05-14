@@ -1,0 +1,5 @@
+- action_list = []
+- (["undelete"]).each do |action|
+  - action_list << {:name => "#{action.capitalize}", :url => feedback_admin_comment_path(comment, :feedback_comment => {:deleted_at => nil} ), :options => {:method => :put} }
+
+= render "feedback/shared/action_button", :btn_text => "Actions", :action_list => action_list, :id => comment.id
