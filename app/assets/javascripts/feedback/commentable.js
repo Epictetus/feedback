@@ -52,15 +52,11 @@ jQuery(document).ready(function($) {
   // build the toolbar
   $(".toolbar").html(Commentable.toolbarContent());
   
-  /*
-  // enable delete comment button
-  $('#delete-comments a').click(function (e) {
-    $('#comment-list input[type=checkbox]').serialize();
-    
-    $('#delete-comments form').appendsubmit();
-    e.preventDefault();
+  //select all toggle
+  $("#select-all-comments-toggle").change(function () {
+    $('input[name="selected_ids[]"]').attr("checked", this.checked);
   });
-  */
+  
 });
 
 Commentable = {
