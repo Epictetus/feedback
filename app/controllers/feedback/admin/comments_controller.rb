@@ -3,11 +3,15 @@ class Feedback::Admin::CommentsController < Feedback::ApplicationController
   include ActionView::Helpers::TextHelper
   
   before_filter :authenticate_user!
-  before_filter :load_comments, :except => [:index, :mass_assign]
+  before_filter :load_comments, :except => [:index, :show, :mass_assign]
   
   def index
     authorize! :index, Feedback::Comment
     @comments = params[:with_deleted] ? Feedback::Comment.with_deleted : Feedback::Comment.all
+  end
+  
+  def show
+    @comment = Feedback::Comment.find(params[:id])
   end
   
   def update

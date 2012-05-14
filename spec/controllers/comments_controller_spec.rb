@@ -92,4 +92,5 @@ describe Feedback::CommentsController do
       response.should redirect_to(@comment.root.commentable)
     end
   end
+  
 end

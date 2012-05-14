@@ -109,5 +109,13 @@ describe Feedback::Admin::CommentsController do
     end
     
   end
+  
+  describe "GET show" do
+    it "assigns comment and renders show action" do
+      comment = create(:comment)
+      get :show, :id => comment.id
+      assigns(:comment)
+    end
+  end
 
 end

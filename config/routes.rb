@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
   namespace :feedback do
     namespace :admin do
-      resources :comments, :only => [:index, :update, :destroy] do
+      resources :comments, :only => [:index, :show, :update, :destroy] do
         post "mass_assign", :on => :collection
       end
     end

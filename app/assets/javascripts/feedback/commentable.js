@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
   });
 
   // Add a select menu (for filtering) in each TH element in the table footer
-  $("tfoot th").each( function ( i ) {
+  $("table#comment-list tfoot th").each( function ( i ) {
     if($(this).hasClass('filterable')){
       this.innerHTML = Commentable.fnCreateSelect( oTable.fnGetColumnData(i) );
       $('select', this).change( function () {
@@ -55,6 +55,11 @@ jQuery(document).ready(function($) {
   //select all toggle
   $("#select-all-comments-toggle").change(function () {
     $('input[name="selected_ids[]"]').attr("checked", this.checked);
+  });
+  
+  //drill down
+  $("table#comment-list tr").click(function () {
+    //var commentID = this.id.split('comment-row-')[1];
   });
   
 });
