@@ -92,7 +92,7 @@ Commentable = {
   deletedToolbarContent: function () {
     var content = '';
     content += '<div class="btn-group restore-comments">';
-    content += '<button name="commit" value="restore" type="submit" class="btn btn-success" data-confirm="Really restore the selected comments?"><i class="icon-share-alt icon-white"></i></a>';
+    content += '<button name="commit" value="restore" type="submit" class="btn btn-success" data-confirm="Really restore the selected comments?"><i class="icon-share-alt icon-white"></i>Restore</a>';
     content += '</div>';
     return content;
   }
