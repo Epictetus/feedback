@@ -81,7 +81,10 @@ Commentable = {
   defaultToolbarContent: function () {
     var content = '';
     content += '<div class="btn-group delete-comments">';
-    content += '<button name="commit" value="destroy" type="submit" class="btn btn-danger" data-confirm="Really delete the selected comments?" data-method="delete"><i class="icon-trash icon-white"></i></a>';
+    content += '<button name="commit" value="destroy" type="submit" class="btn btn-danger" data-confirm="Really delete the selected comments?"><i class="icon-trash icon-white"></i></a>';
+    content += '<button name="commit" value="flag_as_spam" type="submit" class="btn" data-confirm="Really flag the selected comments as spam?"><i class="icon-flag"></i>Spam</a>';
+    content += '<button name="commit" value="flag_as_inappropriate" type="submit" class="btn" data-confirm="Really flag the selected comments as inappropriate?"><i class="icon-flag"></i>Inappropriate</a>';
+    content += '<button name="commit" value="unflag" type="submit" class="btn" data-confirm="Really un-flag the selected comments?">Un-flag</a>';
     content += '</div>';
     return content;
   }, 
@@ -89,7 +92,7 @@ Commentable = {
   deletedToolbarContent: function () {
     var content = '';
     content += '<div class="btn-group restore-comments">';
-    content += '<button name="commit" value="restore" type="submit" class="btn btn-success" data-confirm="Really restore the selected comments?" data-method="put"><i class="icon-share-alt icon-white"></i></a>';
+    content += '<button name="commit" value="restore" type="submit" class="btn btn-success" data-confirm="Really restore the selected comments?"><i class="icon-share-alt icon-white"></i></a>';
     content += '</div>';
     return content;
   }

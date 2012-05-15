@@ -87,27 +87,8 @@ describe Feedback::Admin::CommentsController do
       response.should redirect_to(feedback_admin_comments_path)
       Feedback::Comment.count.should eq(0)
     end
-  
-    it "deletes multiple comments" do
-      sign_in @admin
-      another_comment = create(:comment)
-      Feedback::Comment.count.should eq(2)
-      post(:mass_assign, :commit => "destroy", :selected_ids => [@comment.id, another_comment.id])
-      response.should redirect_to(feedback_admin_comments_path)
-      Feedback::Comment.count.should eq(0)
-    end
     
-    it "restores multiple comments" do
-      sign_in @admin
-      another_comment = create(:comment)
-      [@comment, another_comment].each(&:soft_delete)
-      Feedback::Comment.count.should eq(0)
-      post(:mass_assign, :commit => "restore", :selected_ids => [@comment.id, another_comment.id])
-      response.should redirect_to(feedback_admin_comments_path)
-      Feedback::Comment.count.should eq(2)
-    end
-    
-    it "undeletes individual comments" do
+    it "restores individual comments" do
       sign_in @admin
       deleted_comment = create(:comment, :deleted_at => Time.now)
       put(
@@ -115,8 +96,36 @@ describe Feedback::Admin::CommentsController do
         :id => deleted_comment.id, 
         :feedback_comment => { :deleted_at => nil }
       )
-      response.should redirect_to(feedback_admin_comments_path)
       deleted_comment.reload.deleted?.should eq(false)
+    end
+    
+  end
+  
+  describe "POST mass_assign" do
+    
+    before(:each) do
+      @admin = create(:user, :admin => true)
+      sign_in @admin
+      @comment = create(:comment)
+      @another_comment = create(:comment)
+    end
+    
+    it "deletes selected comments" do
+      Feedback::Comment.count.should eq(2)
+      post(:mass_assign, :commit => "destroy", :selected_ids => [@comment.id, @another_comment.id])
+      Feedback::Comment.count.should eq(0)
+    end
+    
+    it "restores selected comments" do
+      [@comment, @another_comment].each(&:soft_delete)
+      Feedback::Comment.count.should eq(0)
+      post(:mass_assign, :commit => "restore", :selected_ids => [@comment.id, @another_comment.id])
+      Feedback::Comment.count.should eq(2)
+    end
+    
+    it "flags selected comments as spam" do
+      post(:mass_assign, :commit => "flag_as_spam", :selected_ids => [@comment.id, @another_comment.id])
+      [@comment.reload, @another_comment.reload].map(&:status).should eq(["spam", "spam"])
     end
     
   end
