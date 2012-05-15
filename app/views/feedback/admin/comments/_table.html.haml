@@ -7,11 +7,13 @@
         %th.no-sort.no-search
           = check_box_tag "toggle", "1", false, :class => "select-all-comments-toggle"
         %th
-          User
+          About
+        %th
+          This person
         %th
           Said this
         %th
-          About
+          About this
         %th
           Status
         %th.no-sort.no-search
@@ -21,6 +23,8 @@
         %tr{:id => "#{table_id}-comment-row-#{comment.id}"}
           %td
             = check_box_tag "selected_ids[]", "#{comment.id}"
+          %td
+            = "#{distance_of_time_in_words_to_now(comment.created_at)} ago"
           %td
             = comment.author.name
           %td
@@ -44,8 +48,9 @@
     %tfoot
       %tr
         %th
-        %th.filterable
         %th
         %th.filterable
+        %th.filterable
+        %th
         %th.filterable
         %th
