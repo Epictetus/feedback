@@ -97,6 +97,16 @@ describe Feedback::Admin::CommentsController do
       Feedback::Comment.count.should eq(0)
     end
     
+    it "restores multiple comments" do
+      sign_in @admin
+      another_comment = create(:comment)
+      [@comment, another_comment].each(&:soft_delete)
+      Feedback::Comment.count.should eq(0)
+      post(:mass_assign, :commit => "restore", :selected_ids => [@comment.id, another_comment.id])
+      response.should redirect_to(feedback_admin_comments_path)
+      Feedback::Comment.count.should eq(2)
+    end
+    
     it "undeletes individual comments" do
       sign_in @admin
       deleted_comment = create(:comment, :deleted_at => Time.now)
@@ -118,5 +128,5 @@ describe Feedback::Admin::CommentsController do
       assigns(:comment)
     end
   end
-
+  
 end

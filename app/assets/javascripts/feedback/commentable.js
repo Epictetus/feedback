@@ -53,8 +53,8 @@ jQuery(document).ready(function($) {
   });
   
   // build the toolbar
-  $('.tab-pane#default .toolbar').html(Commentable.toolbarContent());
-  $('.tab-pane#deleted .toolbar').html('&nbsp;');
+  $('.tab-pane#default .toolbar').html(Commentable.defaultToolbarContent());
+  $('.tab-pane#deleted .toolbar').html(Commentable.deletedToolbarContent());
   
   //select all toggle
   $(".select-all-comments-toggle").change(function () {
@@ -78,10 +78,18 @@ Commentable = {
     return r + '</select>';
   }, 
   
-  toolbarContent: function () {
+  defaultToolbarContent: function () {
     var content = '';
     content += '<div class="btn-group delete-comments">';
     content += '<button name="commit" value="destroy" type="submit" class="btn btn-danger" data-confirm="Really delete the selected comments?" data-method="delete"><i class="icon-trash icon-white"></i></a>';
+    content += '</div>';
+    return content;
+  }, 
+
+  deletedToolbarContent: function () {
+    var content = '';
+    content += '<div class="btn-group restore-comments">';
+    content += '<button name="commit" value="restore" type="submit" class="btn btn-success" data-confirm="Really restore the selected comments?" data-method="put"><i class="icon-share-alt icon-white"></i></a>';
     content += '</div>';
     return content;
   }

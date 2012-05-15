@@ -31,7 +31,7 @@ class Feedback::Admin::CommentsController < Feedback::ApplicationController
   
   def mass_assign
     authorize! :manage, Feedback::Comment
-    @comments = Feedback::Comment.unscoped.find(params[:selected_ids])
+    @comments = params[:selected_ids] ? Feedback::Comment.unscoped.find(params[:selected_ids]) : []
     self.send(params[:commit])
   end
   
@@ -41,4 +41,12 @@ class Feedback::Admin::CommentsController < Feedback::ApplicationController
     authorize! :manage, Feedback::Comment
     @comments = [Feedback::Comment.unscoped.find(params[:id])]
   end
+  
+  def restore
+    authorize! :destroy, Feedback::Comment
+    if @comments.each(&:undelete)
+      redirect_to feedback_admin_comments_path, :notice => "Restored #{pluralize(@comments.size, 'comment')}."
+    end
+  end
+  
 end
