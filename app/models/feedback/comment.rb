@@ -37,10 +37,6 @@ class Feedback::Comment < ActiveRecord::Base
     Feedback::Comment.unscoped.where("deleted_at IS NOT NULL")
   end
   
-  def self.with_deleted
-    Feedback::Comment.unscoped.all
-  end
-  
   def deleted?
     deleted_at.present?
   end

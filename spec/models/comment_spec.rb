@@ -49,11 +49,6 @@ describe Feedback::Comment do
     Feedback::Comment.deleted_only.size.should == 1
   end
   
-  it "can return all comments including deleted ones" do
-    @comment.soft_delete
-    Feedback::Comment.with_deleted.size.should == 4
-  end
-
   it "can be undeleted" do
     @comment.soft_delete
     Feedback::Comment.count.should == 3
