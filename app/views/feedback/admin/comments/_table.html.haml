@@ -5,7 +5,7 @@
     %thead
       %tr
         %th.no-sort.no-search
-          = check_box_tag "select-all-comments-toggle"
+          = check_box_tag "toggle", "1", false, :class => "select-all-comments-toggle"
         %th
           User
         %th

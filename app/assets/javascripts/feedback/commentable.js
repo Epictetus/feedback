@@ -57,8 +57,8 @@ jQuery(document).ready(function($) {
   $('.tab-pane#deleted .toolbar').html('&nbsp;');
   
   //select all toggle
-  $("#select-all-comments-toggle").change(function () {
-    $('input[name="selected_ids[]"]').attr("checked", this.checked);
+  $(".select-all-comments-toggle").change(function () {
+    $(this).parents('table').find('input[name="selected_ids[]"]').attr("checked", this.checked);
   });
   
   //drill down
