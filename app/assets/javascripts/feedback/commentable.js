@@ -53,7 +53,8 @@ jQuery(document).ready(function($) {
   });
   
   // build the toolbar
-  $(".toolbar").html(Commentable.toolbarContent());
+  $('.tab-pane#default .toolbar').html(Commentable.toolbarContent());
+  $('.tab-pane#deleted .toolbar').html('&nbsp;');
   
   //select all toggle
   $("#select-all-comments-toggle").change(function () {
