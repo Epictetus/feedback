@@ -23,7 +23,7 @@ jQuery(document).ready(function($) {
     $(this).parents('form').submit();
   });
 
-  var oTable = $('table#comment-list').dataTable( {
+  var oTables = $('table.data-table').dataTable( {
     "sDom": "<'row'<'span2'l><'span4 toolbar'><'span6'f>r>t<'row'<'span6'i><'span6'p>>", 
     "sPaginationType": "bootstrap", 
     "aoColumnDefs": [
@@ -40,13 +40,16 @@ jQuery(document).ready(function($) {
   });
 
   // Add a select menu (for filtering) in each TH element in the table footer
-  $("table#comment-list tfoot th").each( function ( i ) {
-    if($(this).hasClass('filterable')){
-      this.innerHTML = Commentable.fnCreateSelect( oTable.fnGetColumnData(i) );
-      $('select', this).change( function () {
-        oTable.fnFilter( $(this).val(), i );
-      });
-    }
+  $('table.data-table').each(function () {
+    var oTable = $(this).dataTable();
+    oTable.find('tfoot th').each( function ( i ) {
+      if($(this).hasClass('filterable')){
+        this.innerHTML = Commentable.fnCreateSelect( oTable.fnGetColumnData(i) );
+        $('select', this).change( function () {
+          oTable.fnFilter( $(this).val(), i );
+        });
+      }
+    });
   });
   
   // build the toolbar
@@ -58,7 +61,7 @@ jQuery(document).ready(function($) {
   });
   
   //drill down
-  $("table#comment-list tr").click(function () {
+  $("table tr").click(function () {
     //var commentID = this.id.split('comment-row-')[1];
   });
   
