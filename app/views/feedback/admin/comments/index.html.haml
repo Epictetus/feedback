@@ -6,54 +6,16 @@
     %h1
       Comments Admin
   
-  = form_tag mass_assign_feedback_admin_comments_path do
-    
-    %table#comment-list.table.table-bordered.table-striped.data-table
-
-      %thead
-        %tr
-          %th.no-sort.no-search
-            = check_box_tag "select-all-comments-toggle"
-          %th
-            User
-          %th
-            Said this
-          %th
-            About
-          %th
-            Status
-          %th.no-sort.no-search
-
-      %tbody
-        - @comments.each do |comment|
-          %tr{:id => "comment-row-#{comment.id}"}
-            %td
-              = check_box_tag "selected_ids[]", "#{comment.id}"
-            %td
-              = comment.author.name
-            %td
-              = truncate(comment.body)
-            %td
-              = truncate(comment.commentable.to_s)
-            %td
-              = comment.status
-            %td
-              .btn-group
-                - if comment.deleted?
-                  = link_to feedback_admin_comment_path(comment, :feedback_comment => {:deleted_at => nil}), :method => :put, :class => "btn btn-success" do
-                    %i.icon-share-alt.icon-white
-                    Restore
-                - else
-                  = render "feedback/admin/comments/comment_action_button", :comment => comment
-                  = link_to feedback_admin_comment_path(comment), :method => :delete, :confirm => "Really delete this comment and its #{comment.descendants.size} replies?", :class => "btn btn-danger" do
-                    %i.icon-trash.icon-white
-                    Delete
-            
-      %tfoot
-        %tr
-          %th
-          %th.filterable
-          %th
-          %th.filterable
-          %th.filterable
-          %th
+  %ul.nav.nav-tabs
+    %li.active
+      %a{:href => "#default", :"data-toggle" => "tab"}
+        Active
+    %li
+      %a{:href => "#deleted", :"data-toggle" => "tab"}
+        Deleted
+      
+  .tab-content
+    .tab-pane.active#default
+      = render "table", :comments => @comments, :table_id => "comment-list"
+    .tab-pane#deleted
+      = render "table", :comments => @deleted_comments, :table_id => "deleted-comment-list"

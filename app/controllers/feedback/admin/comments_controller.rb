@@ -7,7 +7,8 @@ class Feedback::Admin::CommentsController < Feedback::ApplicationController
   
   def index
     authorize! :index, Feedback::Comment
-    @comments = params[:with_deleted] ? Feedback::Comment.with_deleted : Feedback::Comment.all
+    @comments = Feedback::Comment.all
+    @deleted_comments = Feedback::Comment.deleted_only
   end
   
   def show

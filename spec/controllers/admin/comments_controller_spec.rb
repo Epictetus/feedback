@@ -22,6 +22,7 @@ describe Feedback::Admin::CommentsController do
       sign_in @admin
       get :index
       assigns(:comments).should eq([@comment])
+      assigns(:deleted_comments).should eq([@deleted_comment])
     end
     
     # TODO: figure out why this spec is causing "can return all comments including deleted ones" model spec to fail 
