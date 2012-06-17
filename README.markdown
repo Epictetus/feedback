@@ -63,7 +63,6 @@ Make any models commentable with `has_comments`:
 ```ruby
 class BlogPost < ActiveRecord::Base
   has_comments
-  attr_accessible :body, :title, :user_id
 end
 ```
 Add a comment widget to any app view:
