@@ -7,6 +7,8 @@ module Feedback
     initializer "feedback.active_record" do
       ActiveSupport.on_load(:active_record) do
         extend Feedback::Models::Commentable
+        extend Feedback::Models::Reviewable
+        extend Feedback::Models::SoftDeletable
       end
     end
   end

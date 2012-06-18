@@ -4,20 +4,20 @@ describe Feedback::Comment do
   before(:each) do
     @user = create(:user, name: "Bill Bixby")
     @blog_post = create(:blog_post, title: "Mr. McGee, Don't Make Me Angry")
-    @comment = Feedback::Comment.create(:commentable => @blog_post, :author => @user)
-    @reply_1 = Feedback::Comment.create(
+    @comment = Feedback::Comment.create!(:commentable => @blog_post, :author => @user, :body => "Original comment")
+    @reply_1 = Feedback::Comment.create!(
       :commentable => @comment, 
       :author => @user, 
       :parent => @comment, 
       :body => "first reply"
     )
-    @reply_2 = Feedback::Comment.create(
+    @reply_2 = Feedback::Comment.create!(
       :commentable => @comment, 
       :author => @user, 
       :parent => @comment, 
       :body => "second reply"
     )
-    @reply_to_reply = Feedback::Comment.create(
+    @reply_to_reply = Feedback::Comment.create!(
       :commentable => @reply_1, 
       :author => @user, 
       :parent => @reply_1, 

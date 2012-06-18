@@ -12,16 +12,13 @@ class Feedback::CommentsController < Feedback::ApplicationController
   end
   
   def create
-    @comment = Feedback::Comment.new(params[:feedback_comment].merge(
-        :author => current_user, 
-        :commentable => @commentable
-      )
+    @comment = Feedback::Comment.new(
+      params[:feedback_comment].merge(:author => current_user, :commentable => @commentable)
     )
 
     if @comment.save!
       if @commentable.is_a?(Feedback::Comment)
-        @comment.parent = @commentable
-        @comment.save
+        @comment.update_attribute(:parent, @commentable)
       end
       redirect_to_commentable :notice => "Comment saved."
     end

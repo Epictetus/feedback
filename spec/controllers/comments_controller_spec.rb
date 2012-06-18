@@ -29,10 +29,6 @@ describe Feedback::CommentsController do
       )
     end
     
-    it "assigns @comment" do
-      assigns(:comment)
-    end
-    
     it "creates the comment" do
       assigns(:comment).new_record?.should be(false)
     end
