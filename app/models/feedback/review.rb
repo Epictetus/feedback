@@ -7,6 +7,7 @@ class Feedback::Review < ActiveRecord::Base
   
   validates_presence_of :user_id, :reviewable_id, :reviewable_type, :body, :rating
   
+  # this is a comment added using prose.io
   is_soft_deletable
   
   def to_s
